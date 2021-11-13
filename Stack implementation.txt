@@ -1,0 +1,118 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define CAPACITY 5
+void push();
+int isfull();
+int isempty();
+void traverse();
+void pop();
+void peek();
+int stack[CAPACITY];
+int top=-1;
+int main()
+{
+    int choice;
+    while(1)
+    {
+    printf("Press 1 to push the elemets in the stack\nPress 2 to pop elements in the stack:\nPress 3 to traverse the elements in the stack:\nPress 4 to peek:\nPress 5 to exit ");
+    scanf("%d",&choice);
+    switch(choice)
+    {
+        case 1:
+            push();
+            break;
+        case 2:
+            pop();
+            break;
+        case 3:
+            traverse();
+            break;
+        case 4 :
+            peek();
+            break;
+        case 5:
+            exit(1);
+            break;
+        default:
+            printf("Please enter a valid command:\n");
+    }
+}
+}
+void push()
+{
+    // int m=1;
+    // while(m==1)
+    // {
+    if(isfull())
+    {
+        printf("Sorry cannot insert the element because the stack is already full:\n");
+    }
+    else
+    {
+        top++;
+        int insert;
+        printf("Enter the element you want to insert:\n");
+        scanf("%d",&insert);
+        stack[top]=insert;
+    }
+    // printf("Do you want to continue then press 1:\n");
+    // scanf("%d",&m);
+}
+//}
+
+int isfull()
+{
+    if(top==CAPACITY-1)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+int isempty()
+{
+    if(top==-1)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+void traverse()
+{
+    for(int i=0;i<=top;i++)
+    {
+        printf("%d",stack[i]);
+    }
+}
+
+void pop()
+{
+    if(isempty())
+    {
+        printf("The stack is empty:\n");
+    }
+    else
+    {
+        printf("%d sucessfully popped out:\n",stack[top]);
+        top--;
+    }
+}
+
+void peek()
+{
+    if(isempty())
+    {
+        printf("No peek item because stack is empty:\n");
+    }
+    else
+    {
+        printf("%d",stack[top]);
+    }
+}
